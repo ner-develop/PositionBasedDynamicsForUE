@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Vertex.generated.h"
+#include "PbdVertex.generated.h"
 
 class UParticleMeshComponent;
 
@@ -11,7 +11,7 @@ class UParticleMeshComponent;
  * 
  */
 UCLASS()
-class PBDFORUE_API UVertex : public UObject
+class PBDFORUE_API UPbdVertexData : public UObject
 {
 	GENERATED_BODY()
 

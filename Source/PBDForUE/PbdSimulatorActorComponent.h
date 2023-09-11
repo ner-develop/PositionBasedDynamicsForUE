@@ -8,7 +8,7 @@
 
 
 class UParticleMeshComponent;
-class UVertex;
+class UPbdVertexData;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class PBDFORUE_API UPbdSimulatorActorComponent : public UActorComponent
@@ -23,7 +23,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(VisibleInstanceOnly)
-	TArray<UVertex*> VertexArray;
+	TArray<UPbdVertexData*> VertexArray;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Parameters")
 	float Stiffness = 1.0f;
@@ -36,5 +36,5 @@ private:
 	void Step(const float DeltaTime);
 	void Simulate(const float DeltaTime);
 	void ProjectConstraints(const float K);
-	static float Constraint(const UVertex& V1, const UVertex& V2);
+	static float Constraint(const UPbdVertexData& V1, const UPbdVertexData& V2);
 };

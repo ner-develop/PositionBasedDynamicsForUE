@@ -3,7 +3,7 @@
 
 #include "PbdSimulatorActorComponent.h"
 #include "ParticleMeshComponent.h"
-#include "Vertex.h"
+#include "PbdVertex.h"
 
 UPbdSimulatorActorComponent::UPbdSimulatorActorComponent()
 {
@@ -25,7 +25,7 @@ void UPbdSimulatorActorComponent::BeginPlay()
 	VertexArray.Empty();
 	for (int i = 0; i < ParticleMeshComponents.Num(); ++i)
 	{
-		TObjectPtr<UVertex> Vertex = NewObject<UVertex>(this);
+		TObjectPtr<UPbdVertexData> Vertex = NewObject<UPbdVertexData>(this);
 		VertexArray.Add(Vertex);
 		Vertex->ParticleMeshComponentRef = ParticleMeshComponents[i];
 
@@ -112,8 +112,8 @@ void UPbdSimulatorActorComponent::ProjectConstraints(const float K)
 {
 	for (int i = 0; i < VertexArray.Num() - 1; ++i)
 	{
-		const TObjectPtr<UVertex> Vertex1 = VertexArray[i];
-		const TObjectPtr<UVertex> Vertex2 = VertexArray[i + 1];
+		const TObjectPtr<UPbdVertexData> Vertex1 = VertexArray[i];
+		const TObjectPtr<UPbdVertexData> Vertex2 = VertexArray[i + 1];
 
 		const FVector P1P2 = Vertex1->P - Vertex2->P;
 		const float P1P2Length = P1P2.Size();
@@ -132,7 +132,7 @@ void UPbdSimulatorActorComponent::ProjectConstraints(const float K)
 	}
 }
 
-float UPbdSimulatorActorComponent::Constraint(const UVertex& V1, const UVertex& V2)
+float UPbdSimulatorActorComponent::Constraint(const UPbdVertexData& V1, const UPbdVertexData& V2)
 {
 	const float D = (V1.InitialPosition - V2.InitialPosition).Size();
 	return (V1.P - V2.P).Size() - D;
