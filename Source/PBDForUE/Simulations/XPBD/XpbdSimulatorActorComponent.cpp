@@ -1,8 +1,8 @@
 #include "XpbdSimulatorActorComponent.h"
 
-#include "ParticleMeshComponent.h"
 #include "XpbdConstraint.h"
 #include "XpbdParticleData.h"
+#include "PBDForUE/ActorComponents/ParticleMeshComponent.h"
 
 UXpbdSimulatorActorComponent::UXpbdSimulatorActorComponent()
 {

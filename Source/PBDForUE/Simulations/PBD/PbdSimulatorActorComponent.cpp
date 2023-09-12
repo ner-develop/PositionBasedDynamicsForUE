@@ -2,8 +2,8 @@
 
 
 #include "PbdSimulatorActorComponent.h"
-#include "ParticleMeshComponent.h"
 #include "PbdVertex.h"
+#include "PBDForUE/ActorComponents/ParticleMeshComponent.h"
 
 UPbdSimulatorActorComponent::UPbdSimulatorActorComponent()
 {
