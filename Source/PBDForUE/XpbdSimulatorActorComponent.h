@@ -4,39 +4,39 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "PbdSimulatorActorComponent.generated.h"
+#include "XpbdSimulatorActorComponent.generated.h"
 
-
-class UParticleMeshComponent;
-class UPbdVertexData;
+class UXpbdParticleData;
+class UXpbdConstraint;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class PBDFORUE_API UPbdSimulatorActorComponent : public UActorComponent
+class PBDFORUE_API UXpbdSimulatorActorComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:
-	UPbdSimulatorActorComponent();
+public:	
+	UXpbdSimulatorActorComponent();
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(VisibleInstanceOnly)
-	TArray<UPbdVertexData*> VertexArray;
+	TArray<UXpbdParticleData*> ParticleArray;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters")
 	bool bIsEnabledSimulation = true;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Parameters")
-	float Stiffness = 1.0f;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Parameters")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters")
+	double Flexibility = 0.0001f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters")
 	int32 Iterations = 10;
-
 
 private:
 	const FVector Gravity = FVector(0, 0, -98.f);
-	void Step(const float DeltaTime);
-	void Simulate(const float DeltaTime);
-	void ProjectConstraints(const float K);
-	static float Constraint(const UPbdVertexData& V1, const UPbdVertexData& V2);
+
+	UPROPERTY()
+	TArray<UXpbdConstraint*> ConstraintArray;
+
+	void Step(double Δt);
+	void Simulate(double Δt);
 };

@@ -47,6 +47,8 @@ void UPbdSimulatorActorComponent::TickComponent(float DeltaTime, ELevelTick Tick
 
 void UPbdSimulatorActorComponent::Step(float DeltaTime)
 {
+	if (!bIsEnabledSimulation) { return; }
+
 	// 固定点の位置をデータに反映
 	for (const auto& Vertex: VertexArray)
 	{
