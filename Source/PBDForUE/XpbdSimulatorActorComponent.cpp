@@ -50,6 +50,15 @@ void UXpbdSimulatorActorComponent::TickComponent(float DeltaTime, ELevelTick Tic
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	Step(DeltaTime);
+
+	DrawDebugString(
+		GetWorld(),
+		GetOwner()->GetActorLocation(),
+		TEXT("XPBD"),
+		nullptr,
+		FColor::White,
+		0.f
+	);
 }
 
 void UXpbdSimulatorActorComponent::Step(const double Δt)

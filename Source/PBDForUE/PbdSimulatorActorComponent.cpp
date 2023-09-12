@@ -41,8 +41,16 @@ void UPbdSimulatorActorComponent::BeginPlay()
 void UPbdSimulatorActorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
 	Step(DeltaTime);
+
+	DrawDebugString(
+		GetWorld(),
+		GetOwner()->GetActorLocation(),
+		TEXT("PBD"),
+		nullptr,
+		FColor::White,
+		0.f
+	);
 }
 
 void UPbdSimulatorActorComponent::Step(float DeltaTime)
