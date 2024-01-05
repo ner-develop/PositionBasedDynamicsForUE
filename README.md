@@ -10,7 +10,9 @@ https://github.com/ner-devlop/PositionBasedDynamicsForUE/assets/144132227/128745
 
 
 ## ■ 解説技術ブログ
-[[Unity] 論文を読んで紐物理を実装してみよう(PBD)](https://zenn.dev/nrdev/articles/141dbc5774f666)
+- [[Unity] 論文を読んで紐物理を実装してみよう(PBD)](https://zenn.dev/nrdev/articles/141dbc5774f666)
+- [[Unity] 論文を読んで紐物理を実装してみよう(XPBD:eXtended Position Based Dynamics)](https://zenn.dev/nrdev/articles/68ff50a19d91b9)
+
 
 ## ■ 参考文献
 - MÜLLER, Matthias, et al. Position based dynamics. Journal of Visual Communication and Image Representation, 2007, 18.2: 109-118.
